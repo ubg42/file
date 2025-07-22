@@ -2,11 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script src="ruffle/ruffle.js"></script> <!-- Path to Ruffle -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Load Ruffle -->
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    body {
+      background-color: #111;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      color: white;
+      font-family: sans-serif;
+    }
+    embed {
+      border: 3px solid #333;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+  </style>
 </head>
 <body>
-  <div class="swf-container">
-    <embed src="pvz.swf" width="800" height="600">
-  </div>
+  <h1>Playing: pvz.swf</h1>
+  <embed id="game" src="pvz.swf" width="800" height="600">
+
+  <!-- Ruffle handles the Flash playback -->
 </body>
 </html>
