@@ -2,34 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Load Ruffle -->
+  <title>Play PVZ SWF</title>
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
   <style>
-    body {
-      background-color: #111;
+    html, body {
       margin: 0;
+      background: #111;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-    }
-    h1 {
       color: white;
       font-family: sans-serif;
+      flex-direction: column;
     }
-    embed {
-      border: 3px solid #333;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    #player {
+      width: 800px;
+      height: 600px;
     }
   </style>
 </head>
 <body>
-  <h1>Playing: pvz.swf</h1>
-  <embed id="game" src="pvz.swf" width="800" height="600">
+  <h1>Plants vs. Zombies</h1>
+  <div id="player"></div>
 
-  <!-- Ruffle handles the Flash playback -->
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", () => {
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+      document.getElementById("player").appendChild(player);
+      player.load("pvz.swf");
+    });
+  </script>
 </body>
 </html>
