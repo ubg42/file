@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fullscreen Flash with Ruffle</title>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <style>
+    /* Make the page fill the entire viewport */
+    html, body {
+      margin: 0; 
+      padding: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Make the player fill the screen */
+    #player {
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+
+  <script>
+    window.RufflePlayer = window.RufflePlayer || {};
+    window.addEventListener("load", () => {
+      const ruffle = window.RufflePlayer.newest();
+      const player = ruffle.createPlayer();
+      // Set styles to fill container
+      player.style.width = "100%";
+      player.style.height = "100%";
+      document.getElementById("player").appendChild(player);
+      player.load("worldshardestgame3.swf");
+    });
+  </script>
+</body>
+</html>
